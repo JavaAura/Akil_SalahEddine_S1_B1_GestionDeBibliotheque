@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Bibliotheque {
     private final ArrayList<Document> documents;
-    private  Map <Integer,Document> documentMap;
+    private  Map <String,Document> documentMap;
     private int id;
 
     public Bibliotheque(){
@@ -19,7 +19,7 @@ public class Bibliotheque {
     public void ajouterDocument(Document doc){
         doc.setId(id);
         documents.add(doc);
-        documentMap.put(id,doc);
+        documentMap.put(doc.getTitre(),doc);
         id++;
        System.out.println("Le document est bien ajouter !!");
     }
@@ -42,18 +42,15 @@ public class Bibliotheque {
         }
     }
 
-    public void Recherche (String input ){
-        boolean estTrouver = false;
-        for (Document doc : documents){
-        if(doc.getTitre().equals(input) || doc.getAuteur().equals(input)){
-            System.out.println("Le document que vous avez cherchez est : "+ doc);
-            estTrouver =true;
-          }
-        }
-        if (!estTrouver){
-            System.out.println("Ce document n'existe pas ");
-        }
+    public void Recherche (String titre){
+       Document doc = documentMap.get(titre);
+       if (doc != null){
+           System.out.println("Le document que vous avez cherché est : " + doc);
+       } else {
+           System.out.println("Ce document n'existe pas.");
+       }
     }
+
     public void affichage(){
         if (documents.isEmpty()){
             System.out.println("Aucun document disponible.");

@@ -67,8 +67,8 @@ public class ConsoleUI {
                     break;
                 case 3 :
                     System.out.print("Veuillez entrer le titre de document : ");
-                    String key = scanner.nextLine();
-                    biblio.Recherche(key);
+                    String title = scanner.nextLine();
+                    biblio.Recherche(title);
                     break;
                 case 4 :
                     System.out.println("Vous voulez emprunter un livre ou une magazine ?");
