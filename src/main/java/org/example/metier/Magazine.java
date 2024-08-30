@@ -19,13 +19,13 @@ public class Magazine extends Document{
     }
 
     public String toString() {
-        return "Magazine : \n" +
+        return "\nMagazine : \n" +
                 "Titre = " + super.getTitre() +'\n' +
                 "Auteur = " + super.getAuteur() +'\n' +
                 "Date de publication = " +super.getDatePublication() +'\n' +
                 "Nombre de page = " +super.getNombreDePages()+'\n' +
-                "Numero = " + numero + '\n'
-//                "emp = " + emp
+                "Numero = " + numero + '\n'+
+                "Emprunter = " + super.isEmp()
                 ;
     }
 

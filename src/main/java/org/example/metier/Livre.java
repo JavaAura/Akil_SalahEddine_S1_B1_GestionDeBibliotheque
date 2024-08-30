@@ -20,13 +20,13 @@ public class Livre extends Document{
 
     @Override
     public String toString() {
-        return "Livre : \n" +
+        return "\nLivre : \n" +
                 "Titre = " + super.getTitre() +'\n' +
                 "Auteur = " + super.getAuteur() +'\n' +
                 "Date de publication = " +super.getDatePublication() +'\n' +
                 "Nombre de page = " +super.getNombreDePages()+'\n' +
-                "Isbn = " + Isbn + '\n'
-//                "emp = " + emp
+                "Isbn = " + Isbn + '\n'+
+                "Emprunter = " + super.isEmp()
                 ;
     }
     @Override

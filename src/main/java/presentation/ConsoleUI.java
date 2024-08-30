@@ -39,7 +39,6 @@ public class ConsoleUI {
                     System.out.print("Choisissez une option : ");
                     int type = scanner.nextInt();
                     scanner.nextLine();
-
                     System.out.print("Id : ");
                     int id = scanner.nextInt();
                     scanner.nextLine();
@@ -68,6 +67,45 @@ public class ConsoleUI {
                     break;
                 case 2 :
                     biblio.affichage();
+                    break;
+                case 3 :
+                    System.out.print("Veuillez entrer le titre de document : ");
+                    String key = scanner.nextLine();
+                    biblio.Recherche(key);
+                    break;
+                case 4 :
+                    System.out.println("Vous voulez emprunter un livre ou une magazine ?");
+                    System.out.println("1. Livre");
+                    System.out.println("2. Magazine");
+                    System.out.print("Choisissez une option : ");
+                    int docType = scanner.nextInt();
+                    scanner.nextLine();
+                    if (docType == 1){
+                        System.out.print("Veuillez entrer le isbn de livre pour emprunter : ");
+                        String isbn = scanner.nextLine();
+                        biblio.EmprunterDocument(isbn);
+                    }else if (docType == 2){
+                        System.out.print("Veuillez entrer le numero de magazine pour emprunter : ");
+                        int num = scanner.nextInt();
+                        biblio.EmprunterDocument(String.valueOf(num));
+                    }
+                    break;
+                case 5 :
+                    System.out.println("Veuillez entrer si vous voulez retourner un livre ou une magazine : ");
+                    System.out.println("1. Livre");
+                    System.out.println("2. Magazine");
+                    System.out.print("Choisissez une option : ");
+                    int retournDoc = scanner.nextInt();
+                    scanner.nextLine();
+                    if (retournDoc == 1){
+                        System.out.print("Veuillez entrer le isbn de livre pour retourner : ");
+                        String isbn = scanner.nextLine();
+                        biblio.Retourner(isbn);
+                    }else if (retournDoc == 2){
+                        System.out.print("Veuillez entrer le numero de magazine pour retourner : ");
+                        int num = scanner.nextInt();
+                        biblio.Retourner(String.valueOf(num));
+                    }
                     break;
             }
         }while (choix!=0);
