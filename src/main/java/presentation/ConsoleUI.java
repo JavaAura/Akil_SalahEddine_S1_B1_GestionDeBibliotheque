@@ -39,9 +39,6 @@ public class ConsoleUI {
                     System.out.print("Choisissez une option : ");
                     int type = scanner.nextInt();
                     scanner.nextLine();
-                    System.out.print("Id : ");
-                    int id = scanner.nextInt();
-                    scanner.nextLine();
                     System.out.print("Titre : ");
                     String titre = scanner.nextLine();
                     System.out.print("Auteur : ");
@@ -54,12 +51,12 @@ public class ConsoleUI {
                     if(type == 1){
                         System.out.print("ISBN : ");
                         String isbn = scanner.nextLine();
-                        Livre livre = new Livre(id,titre,auteur,new Date(),pages,isbn);
+                        Livre livre = new Livre(titre,auteur,new Date(),pages,isbn);
                         biblio.ajouterDocument(livre);
                     } else if (type == 2) {
                         System.out.print("Numero : ");
                         int numero = scanner.nextInt();
-                        Magazine magazine = new Magazine(id,titre,auteur,new Date(),pages,numero);
+                        Magazine magazine = new Magazine(titre,auteur,new Date(),pages,numero);
                         biblio.ajouterDocument(magazine);
                     }else {
                         System.out.println("Option invalide ");

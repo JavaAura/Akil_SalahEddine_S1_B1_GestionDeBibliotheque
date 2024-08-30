@@ -5,8 +5,8 @@ import java.util.Date;
 public class Magazine extends Document{
     private int numero;
 
-    public Magazine(int id, String titre, String auteur, Date datePublication, int nombreDePages, int numero ) {
-        super(id, titre, auteur, datePublication, nombreDePages);
+    public Magazine( String titre, String auteur, Date datePublication, int nombreDePages, int numero ) {
+        super( titre, auteur, datePublication, nombreDePages);
         this.numero = numero;
     }
 
@@ -20,6 +20,7 @@ public class Magazine extends Document{
 
     public String toString() {
         return "\nMagazine : \n" +
+                "Id = " +super.getId() + '\n'+
                 "Titre = " + super.getTitre() +'\n' +
                 "Auteur = " + super.getAuteur() +'\n' +
                 "Date de publication = " +super.getDatePublication() +'\n' +

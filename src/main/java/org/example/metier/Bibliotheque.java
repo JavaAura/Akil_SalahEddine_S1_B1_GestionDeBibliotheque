@@ -3,16 +3,24 @@ package org.example.metier;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Bibliotheque {
     private final ArrayList<Document> documents;
+    private  Map <Integer,Document> documentMap;
+    private int id;
 
     public Bibliotheque(){
         documents = new ArrayList<Document>();
+        this.documentMap = new HashMap<>();
+        this.id=1;
     }
     public void ajouterDocument(Document doc){
+        doc.setId(id);
         documents.add(doc);
-
+        documentMap.put(id,doc);
+        id++;
        System.out.println("Le document est bien ajouter !!");
     }
     public void EmprunterDocument(String key) {

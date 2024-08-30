@@ -10,8 +10,7 @@ public abstract class Document {
     private int nombreDePages;
     private boolean emp ;
 
-    public Document(int id , String titre ,String auteur ,Date datePublication ,int nombreDePages ) {
-        this.Id = id;
+    public Document( String titre ,String auteur ,Date datePublication ,int nombreDePages ) {
         this.auteur = auteur;
         this.titre = titre;
         this.datePublication = datePublication;
