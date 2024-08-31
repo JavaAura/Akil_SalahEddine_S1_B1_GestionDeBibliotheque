@@ -55,9 +55,10 @@ public class Bibliotheque {
         if (documents.isEmpty()){
             System.out.println("Aucun document disponible.");
         }else {
-            for (Document doc : documents){
-                System.out.println(doc);
-            }
+            System.out.println("Les livres sont : " );
+            documents.stream().filter(doc -> doc instanceof Livre).forEach(System.out::println);
+            System.out.println("Les magazine sont : " );
+            documents.stream().filter(doc -> doc instanceof Magazine).forEach(System.out::println);
         }
     }
     public void Retourner (String key){

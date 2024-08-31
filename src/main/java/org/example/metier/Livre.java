@@ -1,5 +1,7 @@
 package org.example.metier;
 
+import utilitaire.DateUtils;
+
 import java.util.Date;
 
 public class Livre extends Document{
@@ -20,11 +22,12 @@ public class Livre extends Document{
 
     @Override
     public String toString() {
-        return  "\nLivre : \n" +
-                "Id = " +super.getId() + '\n'+
+        String datePub = DateUtils.dateToString(super.getDatePublication());
+        return
+                "\n\nId = " +super.getId() + '\n'+
                 "Titre = " + super.getTitre() +'\n' +
                 "Auteur = " + super.getAuteur() +'\n' +
-                "Date de publication = " +super.getDatePublication() +'\n' +
+                "Date de publication = " +datePub +'\n' +
                 "Nombre de page = " +super.getNombreDePages()+'\n' +
                 "Isbn = " + Isbn + '\n'+
                 "Emprunter = " + super.isEmp()

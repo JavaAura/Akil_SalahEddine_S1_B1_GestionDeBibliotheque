@@ -1,5 +1,7 @@
 package org.example.metier;
 
+import utilitaire.DateUtils;
+
 import java.util.Date;
 
 public class Magazine extends Document{
@@ -19,11 +21,12 @@ public class Magazine extends Document{
     }
 
     public String toString() {
-        return "\nMagazine : \n" +
-                "Id = " +super.getId() + '\n'+
+        String datePub = DateUtils.dateToString(super.getDatePublication());
+        return
+                "\n\nId = " +super.getId() + '\n'+
                 "Titre = " + super.getTitre() +'\n' +
                 "Auteur = " + super.getAuteur() +'\n' +
-                "Date de publication = " +super.getDatePublication() +'\n' +
+                "Date de publication = " +datePub +'\n' +
                 "Nombre de page = " +super.getNombreDePages()+'\n' +
                 "Numero = " + numero + '\n'+
                 "Emprunter = " + super.isEmp()

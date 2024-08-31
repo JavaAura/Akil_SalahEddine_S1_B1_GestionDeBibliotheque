@@ -3,8 +3,9 @@ package presentation;
 import org.example.metier.Bibliotheque;
 import org.example.metier.Livre;
 import org.example.metier.Magazine;
+import utilitaire.DateUtils;
 
-import java.text.SimpleDateFormat;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -12,13 +13,11 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class ConsoleUI {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         Bibliotheque biblio = new Bibliotheque();
         Scanner scanner = new Scanner(System.in);
-        SimpleDateFormat smp = new SimpleDateFormat("dd-MM-yyyy");
         int choix ;
         do {
-            System.out.println();
             System.out.println();
             System.out.println("Menu de Gestion de la Bibliothèque");
             System.out.println();
@@ -43,20 +42,27 @@ public class ConsoleUI {
                     String titre = scanner.nextLine();
                     System.out.print("Auteur : ");
                     String auteur = scanner.nextLine();
-                    System.out.print("Date de publication : ");
+                    System.out.print("Date de publication (dd/MM/yyyy) : ");
                     String date = scanner.nextLine();
+                    Date datePublication;
+                    if (DateUtils.isValidDate(date)){
+                        datePublication = DateUtils.StringToDate(date);
+                    }else {
+                        System.out.println("Date invalide. Veuillez entrer une date au format dd-MM-yyyy.");
+                        return;
+                    }
                     System.out.print("Nombre des pages : ");
                     int pages = scanner.nextInt();
                     scanner.nextLine();
                     if(type == 1){
                         System.out.print("ISBN : ");
                         String isbn = scanner.nextLine();
-                        Livre livre = new Livre(titre,auteur,new Date(),pages,isbn);
+                        Livre livre = new Livre(titre,auteur,datePublication,pages,isbn);
                         biblio.ajouterDocument(livre);
                     } else if (type == 2) {
                         System.out.print("Numero : ");
                         int numero = scanner.nextInt();
-                        Magazine magazine = new Magazine(titre,auteur,new Date(),pages,numero);
+                        Magazine magazine = new Magazine(titre,auteur,datePublication,pages,numero);
                         biblio.ajouterDocument(magazine);
                     }else {
                         System.out.println("Option invalide ");
@@ -104,6 +110,11 @@ public class ConsoleUI {
                         biblio.Retourner(String.valueOf(num));
                     }
                     break;
+                case 0:
+                    System.out.println("Au revoir !");
+                    break;
+                default:
+                    System.out.println("Option invalide !!" );
             }
         }while (choix!=0);
 
