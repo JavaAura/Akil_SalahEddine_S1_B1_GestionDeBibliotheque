@@ -24,7 +24,7 @@ public class Livre extends Document{
     public String toString() {
         String datePub = DateUtils.dateToString(super.getDatePublication());
         return
-                "\n\nId = " +super.getId() + '\n'+
+                "\nId = " +super.getId() + '\n'+
                 "Titre = " + super.getTitre() +'\n' +
                 "Auteur = " + super.getAuteur() +'\n' +
                 "Date de publication = " +datePub +'\n' +

@@ -9,8 +9,6 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class ConsoleUI {
 
     public static void main(String[] args) throws ParseException {
@@ -27,8 +25,8 @@ public class ConsoleUI {
             System.out.println("4. Emprunter un document");
             System.out.println("5. Retourner un document");
             System.out.println("0. Quitter");
-            System.out.print("Choisissez une option : ");
-            choix = scanner.nextInt();
+            System.out.print("\nChoisissez une option : ");
+            choix = biblio.intValidation(scanner);
             scanner.nextLine();
             switch (choix){
                 case 1 :
@@ -36,23 +34,30 @@ public class ConsoleUI {
                     System.out.println("1. Livre");
                     System.out.println("2. Magazine");
                     System.out.print("Choisissez une option : ");
-                    int type = scanner.nextInt();
+                    int type = biblio.intValidation(scanner);
+                    if (type != 1 && type != 2){
+                        System.out.println("Option invalide ");
+                        break;
+                    }
                     scanner.nextLine();
                     System.out.print("Titre : ");
                     String titre = scanner.nextLine();
                     System.out.print("Auteur : ");
                     String auteur = scanner.nextLine();
-                    System.out.print("Date de publication (dd/MM/yyyy) : ");
-                    String date = scanner.nextLine();
+                    String date;
                     Date datePublication;
-                    if (DateUtils.isValidDate(date)){
-                        datePublication = DateUtils.StringToDate(date);
-                    }else {
-                        System.out.println("Date invalide. Veuillez entrer une date au format dd-MM-yyyy.");
-                        return;
-                    }
+                    do {
+                        System.out.print("Date de publication (dd/MM/yyyy) : ");
+                        date = scanner.nextLine();
+                        if (DateUtils.isValidDate(date)){
+                            datePublication = DateUtils.StringToDate(date);
+                            break;
+                        }else {
+                            System.out.println("Date invalide. Veuillez entrer une date au format dd-MM-yyyy.");
+                        }
+                    }while (true);
                     System.out.print("Nombre des pages : ");
-                    int pages = scanner.nextInt();
+                    int pages = biblio.intValidation(scanner);
                     scanner.nextLine();
                     if(type == 1){
                         System.out.print("ISBN : ");
@@ -61,11 +66,10 @@ public class ConsoleUI {
                         biblio.ajouterDocument(livre);
                     } else if (type == 2) {
                         System.out.print("Numero : ");
-                        int numero = scanner.nextInt();
+                        int numero ;
+                        numero = biblio.intValidation(scanner);
                         Magazine magazine = new Magazine(titre,auteur,datePublication,pages,numero);
                         biblio.ajouterDocument(magazine);
-                    }else {
-                        System.out.println("Option invalide ");
                     }
                     break;
                 case 2 :
@@ -81,7 +85,7 @@ public class ConsoleUI {
                     System.out.println("1. Livre");
                     System.out.println("2. Magazine");
                     System.out.print("Choisissez une option : ");
-                    int docType = scanner.nextInt();
+                    int docType = biblio.intValidation(scanner);
                     scanner.nextLine();
                     if (docType == 1){
                         System.out.print("Veuillez entrer le isbn de livre pour emprunter : ");
@@ -89,8 +93,10 @@ public class ConsoleUI {
                         biblio.EmprunterDocument(isbn);
                     }else if (docType == 2){
                         System.out.print("Veuillez entrer le numero de magazine pour emprunter : ");
-                        int num = scanner.nextInt();
+                        int num = biblio.intValidation(scanner);
                         biblio.EmprunterDocument(String.valueOf(num));
+                    }else {
+                        System.out.println("Option invalide ");
                     }
                     break;
                 case 5 :
@@ -98,7 +104,7 @@ public class ConsoleUI {
                     System.out.println("1. Livre");
                     System.out.println("2. Magazine");
                     System.out.print("Choisissez une option : ");
-                    int retournDoc = scanner.nextInt();
+                    int retournDoc = biblio.intValidation(scanner);
                     scanner.nextLine();
                     if (retournDoc == 1){
                         System.out.print("Veuillez entrer le isbn de livre pour retourner : ");
@@ -106,8 +112,10 @@ public class ConsoleUI {
                         biblio.Retourner(isbn);
                     }else if (retournDoc == 2){
                         System.out.print("Veuillez entrer le numero de magazine pour retourner : ");
-                        int num = scanner.nextInt();
+                        int num = biblio.intValidation(scanner);
                         biblio.Retourner(String.valueOf(num));
+                    }else {
+                        System.out.println("Option invalide ");
                     }
                     break;
                 case 0:

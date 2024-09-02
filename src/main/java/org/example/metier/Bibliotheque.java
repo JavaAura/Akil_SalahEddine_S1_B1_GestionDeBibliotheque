@@ -1,18 +1,14 @@
 package org.example.metier;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Bibliotheque {
     private final ArrayList<Document> documents;
-    private  Map <String,Document> documentMap;
+    private final Map <String,Document> documentMap;
     private int id;
 
     public Bibliotheque(){
-        documents = new ArrayList<Document>();
+        documents = new ArrayList<>();
         this.documentMap = new HashMap<>();
         this.id=1;
     }
@@ -41,7 +37,6 @@ public class Bibliotheque {
             System.out.println("Pas de document avec ce identifiant");
         }
     }
-
     public void Recherche (String titre){
        Document doc = documentMap.get(titre);
        if (doc != null){
@@ -71,5 +66,18 @@ public class Bibliotheque {
         }
         System.out.println("Document non trouvé ou déjà retourné.");
     }
-
+    public int intValidation(Scanner scan){
+        boolean isValide = false;
+        int input =0 ;
+        while (!isValide){
+            if (scan.hasNextInt()) {
+                input = scan.nextInt();
+                isValide = true;
+            }else{
+                System.out.print("Erreur : vous devez entrer un nombre entier : ");
+                scan.next();
+            }
+        }
+        return input;
+    }
 }
