@@ -42,7 +42,7 @@ public class ConsoleUI {
                     scanner.nextLine();
                     System.out.print("Titre : ");
                     String titre = scanner.nextLine();
-                    System.out.print("Auteur : ");
+                    System.out.print("Auteur :");
                     String auteur = scanner.nextLine();
                     String date;
                     Date datePublication;
