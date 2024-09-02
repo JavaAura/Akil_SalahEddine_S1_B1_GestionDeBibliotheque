@@ -50,6 +50,7 @@ public class Bibliotheque {
         if (documents.isEmpty()){
             System.out.println("Aucun document disponible.");
         }else {
+
             System.out.println("Les livres sont : " );
             documents.stream().filter(doc -> doc instanceof Livre).forEach(System.out::println);
             System.out.println("Les magazine sont : " );
@@ -66,12 +67,26 @@ public class Bibliotheque {
         }
         System.out.println("Document non trouvé ou déjà retourné.");
     }
+    public String StringValisation(Scanner scan){
+    boolean isValide = false;
+    String input = null;
+    while (!isValide){
+        input = scan.nextLine();
+        if (input != null && !input.isEmpty() ){
+            isValide = true;
+        }else {
+            System.out.print("Erreur : vous devez entrer une chaîne de caractères non vide : ");
+        }
+    }
+    return input;
+    }
     public int intValidation(Scanner scan){
         boolean isValide = false;
         int input =0 ;
         while (!isValide){
             if (scan.hasNextInt()) {
                 input = scan.nextInt();
+
                 isValide = true;
             }else{
                 System.out.print("Erreur : vous devez entrer un nombre entier : ");
@@ -80,4 +95,5 @@ public class Bibliotheque {
         }
         return input;
     }
+
 }

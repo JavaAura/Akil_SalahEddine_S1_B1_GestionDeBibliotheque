@@ -41,9 +41,9 @@ public class ConsoleUI {
                     }
                     scanner.nextLine();
                     System.out.print("Titre : ");
-                    String titre = scanner.nextLine();
+                    String titre = biblio.StringValisation(scanner);
                     System.out.print("Auteur :");
-                    String auteur = scanner.nextLine();
+                    String auteur = biblio.StringValisation(scanner);
                     String date;
                     Date datePublication;
                     do {
@@ -77,7 +77,7 @@ public class ConsoleUI {
                     break;
                 case 3 :
                     System.out.print("Veuillez entrer le titre de document : ");
-                    String title = scanner.nextLine();
+                    String title = biblio.StringValisation(scanner);
                     biblio.Recherche(title);
                     break;
                 case 4 :
@@ -89,7 +89,7 @@ public class ConsoleUI {
                     scanner.nextLine();
                     if (docType == 1){
                         System.out.print("Veuillez entrer le isbn de livre pour emprunter : ");
-                        String isbn = scanner.nextLine();
+                        String isbn = biblio.StringValisation(scanner);
                         biblio.EmprunterDocument(isbn);
                     }else if (docType == 2){
                         System.out.print("Veuillez entrer le numero de magazine pour emprunter : ");
@@ -108,7 +108,7 @@ public class ConsoleUI {
                     scanner.nextLine();
                     if (retournDoc == 1){
                         System.out.print("Veuillez entrer le isbn de livre pour retourner : ");
-                        String isbn = scanner.nextLine();
+                        String isbn = biblio.StringValisation(scanner);
                         biblio.Retourner(isbn);
                     }else if (retournDoc == 2){
                         System.out.print("Veuillez entrer le numero de magazine pour retourner : ");
