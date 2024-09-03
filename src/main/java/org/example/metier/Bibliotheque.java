@@ -34,7 +34,7 @@ public class Bibliotheque {
             }
         }
         if (!docTrouve) {
-            System.out.println("Pas de document avec ce identifiant");
+            System.out.println("Pas de document avec ce identifiant :)");
         }
     }
     public void Recherche (String titre){
