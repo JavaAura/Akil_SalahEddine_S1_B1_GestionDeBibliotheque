@@ -17,55 +17,56 @@ public class Bibliotheque {
         documents.add(doc);
         documentMap.put(doc.getTitre(),doc);
         id++;
-       System.out.println("Le document est bien ajouter !!");
+       System.out.println("\nLe document est bien ajouter !!");
     }
-    public void EmprunterDocument(String key) {
+
+    public void EmprunterDocument(int id) {
         boolean docTrouve = false;
         for (Document doc : documents) {
-            if (doc instanceof Livre && ((Livre) doc).getIsbn().equals(key) || (doc instanceof Magazine && String.valueOf(((Magazine) doc).getNumero()).equals(key))) {
+            if (doc.getId() == id){
                 docTrouve = true;
-                if (doc.isEmp()) {
+                if (doc.isEmp()){
                     System.out.println("Le document est déjà emprunté !");
-                } else {
+                }else {
                     doc.setEmp(true);
-                    System.out.println("Document emprunté avec succès !");
+                    System.out.println("\nLe document emprunté avec succès !");
                 }
                 break;
             }
         }
         if (!docTrouve) {
-            System.out.println("Pas de document avec ce identifiant :)");
-        }
+        System.out.println("\nPas de document avec ce identifiant :)");
+          }
     }
     public void Recherche (String titre){
        Document doc = documentMap.get(titre);
        if (doc != null){
-           System.out.println("Le document que vous avez cherché est : " + doc);
+           System.out.println("\nLe document que vous avez cherché est : " + doc);
        } else {
-           System.out.println("Ce document n'existe pas.");
+           System.out.println("\nCe document n'existe pas.");
        }
     }
 
     public void affichage(){
         if (documents.isEmpty()){
-            System.out.println("Aucun document disponible.");
+            System.out.println("\nAucun document disponible.");
         }else {
 
-            System.out.println("Les livres sont : " );
+            System.out.println("\nLes livres sont : " );
             documents.stream().filter(doc -> doc instanceof Livre).forEach(System.out::println);
-            System.out.println("Les magazine sont : " );
+            System.out.println("\nLes magazine sont : " );
             documents.stream().filter(doc -> doc instanceof Magazine).forEach(System.out::println);
         }
     }
-    public void Retourner (String key){
+    public void Retourner (int id){
         for (Document doc :documents){
-            if((doc instanceof Livre && ((Livre) doc).getIsbn().equals(key)) || (doc instanceof Magazine && String.valueOf (((Magazine) doc).getNumero()).equals(key)) && doc.isEmp()){
+            if(doc.getId()==id && doc.isEmp()){
                 doc.setEmp(false);
-                System.out.println("Document retourné avec succès !");
+                System.out.println("\nDocument retourné avec succès !");
                 return;
             }
         }
-        System.out.println("Document non trouvé ou déjà retourné.");
+        System.out.println("\nDocument non trouvé ou déjà retourné.");
     }
     public String StringValisation(Scanner scan){
     boolean isValide = false;

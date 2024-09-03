@@ -25,7 +25,7 @@ public class ConsoleUI {
             System.out.println("4. Emprunter un document");
             System.out.println("5. Retourner un document");
             System.out.println("0. Quitter");
-            System.out.print("\nChoisissez une option : ");
+            System.out.print("\nVeuillez entrer votre choix (1-6) : " );
             choix = biblio.intValidation(scanner);
             scanner.nextLine();
             switch (choix){
@@ -81,42 +81,14 @@ public class ConsoleUI {
                     biblio.Recherche(title);
                     break;
                 case 4 :
-                    System.out.println("Vous voulez emprunter un livre ou une magazine ?");
-                    System.out.println("1. Livre");
-                    System.out.println("2. Magazine");
-                    System.out.print("Choisissez une option : ");
-                    int docType = biblio.intValidation(scanner);
-                    scanner.nextLine();
-                    if (docType == 1){
-                        System.out.print("Veuillez entrer le isbn de livre pour emprunter : ");
-                        String isbn = biblio.StringValisation(scanner);
-                        biblio.EmprunterDocument(isbn);
-                    }else if (docType == 2){
-                        System.out.print("Veuillez entrer le numero de magazine pour emprunter : ");
-                        int num = biblio.intValidation(scanner);
-                        biblio.EmprunterDocument(String.valueOf(num));
-                    }else {
-                        System.out.println("Option invalide ");
-                    }
+                        System.out.print("Veuillez entrer le ID de document pour emprunter : ");
+                        int id = biblio.intValidation(scanner);
+                        biblio.EmprunterDocument(id);
                     break;
                 case 5 :
-                    System.out.println("Veuillez entrer si vous voulez retourner un livre ou une magazine : ");
-                    System.out.println("1. Livre");
-                    System.out.println("2. Magazine");
-                    System.out.print("Choisissez une option : ");
-                    int retournDoc = biblio.intValidation(scanner);
-                    scanner.nextLine();
-                    if (retournDoc == 1){
-                        System.out.print("Veuillez entrer le isbn de livre pour retourner : ");
-                        String isbn = biblio.StringValisation(scanner);
-                        biblio.Retourner(isbn);
-                    }else if (retournDoc == 2){
-                        System.out.print("Veuillez entrer le numero de magazine pour retourner : ");
-                        int num = biblio.intValidation(scanner);
-                        biblio.Retourner(String.valueOf(num));
-                    }else {
-                        System.out.println("Option invalide ");
-                    }
+                        System.out.print("Veuillez entrer le ID de document pour retourner : ");
+                        int iD = biblio.intValidation(scanner);
+                        biblio.Retourner(iD);
                     break;
                 case 0:
                     System.out.println("Au revoir !");
