@@ -50,3 +50,15 @@ Veuillez entrer votre choix (1-6) :
 - Git : Utilisé pour le contrôle de version.
 - JIRA : Gère les tâches et les sprints.
 - Participation à des daily stand-ups simulés pour le suivi du projet.
+
+# Conception UML 
+## Diagramme de cas d'utilisation :
+<img width="587" alt="BiblioUseCase" src="https://github.com/user-attachments/assets/9be929c0-670f-4f84-868b-cd58acf2e396">
+
+## Diagramme de classe : 
+
+<img width="458" alt="BiblioClass" src="https://github.com/user-attachments/assets/5f444ba3-e352-44fa-9073-ef6255dc43a4">
+
+## Planification JIRA :
+
+#### https://omama.atlassian.net/jira/software/projects/GDB/boards/4/timeline?shared=&atlOrigin=eyJpIjoiMTYyY2RiMGVlMjM0NGRiNWE3MjY3NzZhMTY0YWVhNzciLCJwIjoiaiJ9
