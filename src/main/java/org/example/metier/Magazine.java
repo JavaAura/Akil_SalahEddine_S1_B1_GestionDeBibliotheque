@@ -22,6 +22,12 @@ public class Magazine extends Document{
 
     public String toString() {
         String datePub = DateUtils.dateToString(super.getDatePublication());
+        String message;
+        if (super.isEmp()){
+            message = "Pas Disponible";
+        }else {
+            message = "Disponible";
+        }
         return
                 "\nId = " +super.getId() + '\n'+
                 "Titre = " + super.getTitre() +'\n' +
@@ -29,7 +35,7 @@ public class Magazine extends Document{
                 "Date de publication = " +datePub +'\n' +
                 "Nombre de page = " +super.getNombreDePages()+'\n' +
                 "Numero = " + numero + '\n'+
-                "Emprunter = " + super.isEmp()
+                "Status = " + message
                 ;
     }
 
