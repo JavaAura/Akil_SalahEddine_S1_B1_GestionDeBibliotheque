@@ -26,7 +26,7 @@ public class ConsoleUI {
             System.out.println("3. Rechercher un document");
             System.out.println("4. Emprunter un document");
             System.out.println("5. Retourner un document");
-            System.out.println("0. Quitter");
+            System.out.println("6. Quitter");
             System.out.print("\nVeuillez entrer votre choix (1-6) : " );
             choix = validation.intValidation(scanner);
             scanner.nextLine();
@@ -92,8 +92,8 @@ public class ConsoleUI {
                         int iD = validation.intValidation(scanner);
                         biblio.Retourner(iD);
                     break;
-                case 0:
-                    System.out.println("Au revoir !");
+                case 6:
+                    System.out.println("\nAu revoir !");
                     break;
                 default:
                     System.out.println("Option invalide !!" );

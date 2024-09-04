@@ -64,6 +64,7 @@ public abstract class Document {
     public void setEmp(boolean emp) {
         this.emp = emp;
     }
+
     public abstract boolean emprunter();
     public abstract boolean retourner();
     public abstract void afficherDetails();

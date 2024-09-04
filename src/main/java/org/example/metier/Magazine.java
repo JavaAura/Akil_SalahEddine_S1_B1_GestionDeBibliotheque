@@ -41,16 +41,26 @@ public class Magazine extends Document{
 
     @Override
     public boolean emprunter() {
-        return false;
+        if (super.isEmp()){
+            return true;
+        }else {
+            return false;
+        }
     }
 
     @Override
     public boolean retourner() {
-        return false;
+        if (super.isEmp()){
+            return false;
+        }else {
+            return true;
+        }
     }
 
     @Override
     public void afficherDetails() {
-
+        System.out.println("Détails du document : \n" +this.toString());
     }
+
 }
+
