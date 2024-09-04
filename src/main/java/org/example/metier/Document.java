@@ -16,7 +16,6 @@ public abstract class Document {
         this.datePublication = datePublication;
         this.nombreDePages = nombreDePages ;
         this.emp = false;
-
     }
 
     public int getId() {
