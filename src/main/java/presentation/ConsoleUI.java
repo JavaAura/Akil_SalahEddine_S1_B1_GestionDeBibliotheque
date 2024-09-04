@@ -4,6 +4,7 @@ import org.example.metier.Bibliotheque;
 import org.example.metier.Livre;
 import org.example.metier.Magazine;
 import utilitaire.DateUtils;
+import utilitaire.Validation;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -13,6 +14,7 @@ public class ConsoleUI {
 
     public static void main(String[] args) throws ParseException {
         Bibliotheque biblio = new Bibliotheque();
+        Validation validation = new Validation();
         Scanner scanner = new Scanner(System.in);
         int choix ;
         do {
@@ -26,7 +28,7 @@ public class ConsoleUI {
             System.out.println("5. Retourner un document");
             System.out.println("0. Quitter");
             System.out.print("\nVeuillez entrer votre choix (1-6) : " );
-            choix = biblio.intValidation(scanner);
+            choix = validation.intValidation(scanner);
             scanner.nextLine();
             switch (choix){
                 case 1 :
@@ -34,16 +36,16 @@ public class ConsoleUI {
                     System.out.println("1. Livre");
                     System.out.println("2. Magazine");
                     System.out.print("Choisissez une option : ");
-                    int type = biblio.intValidation(scanner);
+                    int type = validation.intValidation(scanner);
                     if (type != 1 && type != 2){
                         System.out.println("Option invalide ");
                         break;
                     }
                     scanner.nextLine();
                     System.out.print("Titre : ");
-                    String titre = biblio.StringValisation(scanner);
+                    String titre = validation.StringValisation(scanner);
                     System.out.print("Auteur :");
-                    String auteur = biblio.StringValisation(scanner);
+                    String auteur = validation.StringValisation(scanner);
                     String date;
                     Date datePublication;
                     do {
@@ -57,7 +59,7 @@ public class ConsoleUI {
                         }
                     }while (true);
                     System.out.print("Nombre des pages : ");
-                    int pages = biblio.intValidation(scanner);
+                    int pages = validation.intValidation(scanner);
                     scanner.nextLine();
                     if(type == 1){
                         System.out.print("ISBN : ");
@@ -67,7 +69,7 @@ public class ConsoleUI {
                     } else if (type == 2) {
                         System.out.print("Numero : ");
                         int numero ;
-                        numero = biblio.intValidation(scanner);
+                        numero = validation.intValidation(scanner);
                         Magazine magazine = new Magazine(titre,auteur,datePublication,pages,numero);
                         biblio.ajouterDocument(magazine);
                     }
@@ -77,17 +79,17 @@ public class ConsoleUI {
                     break;
                 case 3 :
                     System.out.print("Veuillez entrer le titre de document : ");
-                    String title = biblio.StringValisation(scanner);
+                    String title = validation.StringValisation(scanner);
                     biblio.Recherche(title);
                     break;
                 case 4 :
                         System.out.print("Veuillez entrer le ID de document pour emprunter : ");
-                        int id = biblio.intValidation(scanner);
+                        int id = validation.intValidation(scanner);
                         biblio.EmprunterDocument(id);
                     break;
                 case 5 :
                         System.out.print("Veuillez entrer le ID de document pour retourner : ");
-                        int iD = biblio.intValidation(scanner);
+                        int iD = validation.intValidation(scanner);
                         biblio.Retourner(iD);
                     break;
                 case 0:
